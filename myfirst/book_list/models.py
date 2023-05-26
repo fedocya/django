@@ -4,7 +4,6 @@ from django.utils import timezone
 
 class Book(models.Model):
     book_title = models.CharField('название книги', max_length=100)
-
     book_text = models.TextField('текст статьи')
     pub_date = models.DateTimeField('дата публикации')
 
@@ -12,7 +11,7 @@ class Book(models.Model):
         return self.book_title
 
     def was_published_recently(self):
-        return self.pub_date >= (timezone.now() - datetime.timedelta(days = 7))
+        return self.pub_date >= (timezone.now() - datetime.timedelta(days=7))
 
     class Meta:
         verbose_name = "Книга"
@@ -41,8 +40,3 @@ class Comment(models.Model):
 # on_delete=models.CASCADE при удалиние статьи удалятся и все коментарии к ней
 
 
-# from book_list.models import Book,Comment
-# a = Book(book_title = "вторая книга",book_text = 'текст текст текст текст текст....', pub_date = timezone.now())
-# from django.utils import timezone
-# python manage.py migrate
-# python manage.py makemigrations book_list
