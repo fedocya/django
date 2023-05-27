@@ -3,8 +3,8 @@ from django.db import models
 from django.utils import timezone
 
 class Book(models.Model):
-    book_title = models.CharField('название книги', max_length=100)
-    book_text = models.TextField('текст статьи')
+    book_title = models.CharField('название Книги', max_length=100)
+    book_text = models.TextField('Описание книгии')
     pub_date = models.DateTimeField('дата публикации')
 
     def __str__(self):

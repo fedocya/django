@@ -1,0 +1,12 @@
+{% block content %}
+<h1>Здесь вы можете добавить ваши книги</h1>
+<form action="{% url 'book_list:add_a_book' %}" method="POST" name="Book">
+    {% csrf_token %}
+    <input type="text" required placeholder="Название Книги" name="name"><br>
+    <textarea name="date"  cols="30" rows="10" >
+    </textarea><br>
+    <input type="date" required placeholder='дата публикации' >
+    <button type="submit">Добавить книгу</button>
+</form>
+
+{% endblock %}

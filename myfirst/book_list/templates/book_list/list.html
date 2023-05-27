@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Последние книги{% endblock %}
+{% block content %}
+<a href="{% url 'book_list:add_a_book' %}"><h3>ДОБАВИТЬ КНИГУ</h3></a>
+<h2>Список книг:</h2>
+   {% if latest_book_list %}
+
+      {% for a in latest_book_list %}
+         <a href="{% url 'book_list:detail' a.id %}">{{a.book_title}}</a><br>
+         <!--указываю url ссылки и привязку по id (a.id)-->
+         <!--{{a.book_title}} к результатом переборки списка  выводится название -->
+      {% endfor %}
+
+   {% else %}
+      Книги не найдены
+   {% endif %}
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}{{article.book_title}}{% endblock %}
+
+{% block content %}
+
+<h2>{{article.book_title}}</h2>
+<p>{{article.book_text}}</p>
+<em>{{article.pub_date}}</em>
+<hr>
+{% if latest_comments_list %}
+    {% for c in latest_comments_list %}
+        <p>
+            <strong>{{c.author_name}}</strong>
+            <p>{{c.comment_text}}</p>
+        </p>
+    {% endfor %}
+{% else %}
+Комментарии не найдены! Станьте первым:
+{% endif %}
+<hr>
+
+<form action="{% url 'book_list:leave_comment' article.id %}" method="POST">
+    {% csrf_token %}
+    <input type="text" required placeholder="Вше имя" name="name"><br>
+    <textarea name="text"  required="" placeholder="Текст комментария" cols="30" rows="10">
+    </textarea><br>
+
+    <button type="submit">Оставить коментариЙ</button>
+</form>
+{% endblock %}
+
+
