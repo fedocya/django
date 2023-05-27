@@ -29,6 +29,5 @@ def leave_comment(request, article_id):
     return HttpResponseRedirect(reverse('book_list:detail', args=(a.id,)))
 
 def add_a_book(request):
-    tasks = Book.objects.all()
-    return render(request, 'book_list/add_book.html', {'title':'Страница сайта', 'tasks':tasks})
+    return render(request, 'book_list/add_book.html')
 
